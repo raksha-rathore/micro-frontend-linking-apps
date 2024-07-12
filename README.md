@@ -15,5 +15,6 @@ Criterias that this micro-frontend architecture follows:
 5. Near Zero Coupling between Container and the child apps
 6. Container should not assume that the child is using a particular framework
 7. All necessary communications between container and child apps must be done with callbacks or simple events
+8. CSS from one project should not affect another
 
 
