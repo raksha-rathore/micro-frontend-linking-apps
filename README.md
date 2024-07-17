@@ -4,7 +4,7 @@
 Sub-modules of the application:
 1. Container (uses React)
 2. Marketing (uses react)
-3. Authemtication (uses React)
+3. Authentication (uses React)
 4. Dashboard (uses Vue)
 
 Criterias that this micro-frontend architecture follows:
