@@ -7,14 +7,14 @@ import {
     CardMedia, 
     Grid, 
     Typography, 
-    Container,
-    MaterialLink
+    Container
 } from "@material-ui/core";
 import { Link } from 'react-router-dom';
-import { useStyles } from "./styles";
+import { useStyles } from "./landingStyles";
+import Footer from "./Footer";
 
 
-const cards = [1,2,3,4,5,6,7,8,9];
+const cards = [1,2,3,4,5,6];
 
 const Album = () => {
     const classes = useStyles();
@@ -50,7 +50,7 @@ const Album = () => {
                             </Grid>
                             <Grid item>
                                 <Link to="/pricing">
-                                    <Button variant="contained" color="primary">
+                                    <Button variant="outlined" color="primary">
                                         pricing
                                     </Button>
                                 </Link>
@@ -87,9 +87,17 @@ const Album = () => {
                         ))
                     }
                 </Grid>
-
             </Container>
         </main>
+        <footer className={classes.footer}>
+            <Typography variant="h6" align="center" gutterBottom>
+                footer
+            </Typography>
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                Something here to give footer a purpose
+                <Footer />
+            </Typography>
+        </footer>
     </>
 }
 
