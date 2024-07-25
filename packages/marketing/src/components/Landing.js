@@ -89,15 +89,7 @@ const Album = () => {
                 </Grid>
             </Container>
         </main>
-        <footer className={classes.footer}>
-            <Typography variant="h6" align="center" gutterBottom>
-                footer
-            </Typography>
-            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                Something here to give footer a purpose
-                <Footer />
-            </Typography>
-        </footer>
+        <Footer />
     </>
 }
 

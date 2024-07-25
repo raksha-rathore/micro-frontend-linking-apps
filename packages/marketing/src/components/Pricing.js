@@ -9,11 +9,13 @@ import {
     Typography, 
     Container,
     Box,
-    Link
+    Link,
+    CardHeader
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder"
 import { Link as RouterLink} from 'react-router-dom';
 import { useStyles } from "./pricingStyles";
+import Footer from "./Footer";
 
 const tiers = [{
     title: 'Free',
@@ -85,6 +87,89 @@ const Pricing = () => {
                 this layout is built with default Material UI components with a little 
                 bit of customisations
             </Typography>
+        </Container>
+        <Container>
+            <Grid container spacing={5} alignItems="flex-end">
+                { tiers.map(tier => {
+                    <Grid
+                    item
+                    key={tier.title}
+                    xs={12}
+                    sm={tier.title === "Enterprise" ? 12 : 6}
+                    md={4}
+                >
+                    <Card>
+                        <CardHeader
+                            title={tier.title}
+                            subheader={tier.subheader}
+                            titleTypographyProps={{align: "center"}}
+                            action={tier.title === 'Pro' ? <StarIcon /> : null}
+                            className={classes.CardHeader}
+                        />
+                        <CardContent>
+                            <div className={classes.cardPricing}>
+                                <Typography variant="h3" component="h2" color="textPrimary">
+                                    ${tier.price}
+                                </Typography>
+                                <Typography variant="h6" color="textSecondary">
+                                    ${tier.price}
+                                </Typography>
+                            </div>
+                            <ul>
+                                {
+                                    tier.description.map((line) => {
+                                        <Typography 
+                                            key={line}
+                                            component='li'
+                                            variant="subtitle1"
+                                            align="center"
+                                        >
+                                            {line}
+                                        </Typography>
+                                    })
+                                }
+                            </ul>
+                        </CardContent>
+                        <CardActions>
+                            <Button 
+                                component={RouterLink}
+                                to="/auth/signup"
+                                fullWidth
+                                color="primary"
+                            >
+                                {tier.buttonText}
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+                })}
+                
+            </Grid>
+        </Container>
+        <Container maxWidth="md" component="footer" className={classes.footer}>
+            <Grid container spacing={4} justifyContent="space-evenly">
+            {
+                footers.map(footer => (
+                    <Grid item xs={6} sm={3} key={footer.title}>
+                        <Typography variant="h6" color="textPrimary" gutterBottom>
+                            {footer.title}
+                        </Typography>
+                        <ul>
+                            {
+                                footer.description.map(item => (
+                                    <li key={item}>
+                                        <Link href="#" variant="subtitle" color="textSecondary">
+                                            {item}
+                                        </Link>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </Grid>
+                ))
+            }
+            </Grid>
+            <Footer />
         </Container>
     </>)
 };
